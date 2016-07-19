@@ -8,6 +8,11 @@ import pyocr.builders
 import io
 
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1] in set(['pdf', 'png', 'jpg', 'jpeg'])
+
+
 def image_to_text(image):
     tool = pyocr.get_available_tools()[0]
     lang = tool.get_available_languages()[2]
